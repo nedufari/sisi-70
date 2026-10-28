@@ -396,7 +396,7 @@
   async function uploadVideo(file, onProgress) {
     if (!C.videoUploadUrl) { for (let p = 0; p <= 1; p += .08) { onProgress(p); await wait(120) } return { id: 'preview' } }
     const mimeType = file.type || 'video/mp4'
-    const res = await fetch(C.videoUploadUrl, { body: JSON.stringify({ action: 'start', code: S.code, mimeType, name: `${S.firstName} ${S.lastName}`, size: file.size }), method: 'POST' })
+    const res = await fetch(C.videoUploadUrl, { body: JSON.stringify({ action: 'start', code: S.code, mimeType, name: `${S.firstName} ${S.lastName}`, origin: location.origin, size: file.size }), method: 'POST' })
     const j = await res.json()
     if (!j.ok) throw new Error(j.error || 'The upload could not start')
     return new Promise((resolve, reject) => {

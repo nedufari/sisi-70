@@ -6,17 +6,17 @@ window.SISIMI = {
   celebrant: 'Mrs. Oyinlola Olowu',
   aka: 'Sisi mi',
 
-  // The client confirmed Sunday. Sunday is 27 December 2026 (the 28th is a Monday).
-  dateLabel: 'Sunday, December 27, 2026',
-  day: 'Sunday',
-  date: 'December 27, 2026',
+  // Confirmed by the client: Monday, 28 December 2026 (the printed invitation's "Sunday" is a typo).
+  dateLabel: 'Monday, December 28, 2026',
+  day: 'Monday',
+  date: 'December 28, 2026',
 
   events: [
     {
       key: 'thanksgiving',
       title: 'Thanksgiving Service',
-      start: '2026-12-27T10:00:00+01:00',
-      end: '2026-12-27T12:00:00+01:00', // for calendars only: the invitation gives start times
+      start: '2026-12-28T10:00:00+01:00',
+      end: '2026-12-28T12:00:00+01:00', // for calendars only: the invitation gives start times
       time: '10:00 AM',
       venue: 'Chapel of Christ the Light',
       address: 'CIPM Avenue, Alausa, Lagos, Nigeria',
@@ -25,8 +25,8 @@ window.SISIMI = {
     {
       key: 'reception',
       title: 'Reception',
-      start: '2026-12-27T14:00:00+01:00',
-      end: '2026-12-27T18:00:00+01:00',
+      start: '2026-12-28T14:00:00+01:00',
+      end: '2026-12-28T18:00:00+01:00',
       time: '2:00 PM',
       venue: 'The Civic Centre',
       address: 'Ozumba Mbadiwe Avenue, opposite 1004 Estate, Victoria Island, Lagos',
@@ -35,25 +35,24 @@ window.SISIMI = {
   ],
 
   // RSVPs close at the end of the day itself
-  rsvpClosesAt: '2026-12-27T23:59:59+01:00',
+  rsvpClosesAt: '2026-12-28T23:59:59+01:00',
 
   /*
-   * The client's Google Form (see google/SETUP.md). Leave `action` empty and the site runs in
-   * preview mode: everything works, nothing is sent.
-   * action: https://docs.google.com/forms/d/e/<FORM_ID>/formResponse
+   * The client's Google Form, in raccesshub@gmail.com's Drive ("Sisi mi @ 70 · RSVP"); answers land in the
+   * "Sisi mi @ 70 · RSVPs" sheet. Empty `action`: preview mode, nothing is sent.
    */
   form: {
-    action: '',
+    action: 'https://docs.google.com/forms/d/e/1FAIpQLSfE3XbwSMVBRReGkFD1Ub84N_3WtYWFcbotxIgyhcMBh7HQ9A/formResponse',
     entries: {
-      response: '', // Will you be joining us?
-      firstName: '',
-      lastName: '',
-      whatsapp: '',
-      email: '',
-      attending: '', // Which part of the day?
-      wish: '',
-      video: '', // link to their video in Drive
-      passCode: '',
+      response: '1984387863', // Will you be joining us?
+      firstName: '1524379452',
+      lastName: '1376305296',
+      whatsapp: '1768138120',
+      email: '1220929286',
+      attending: '585985167', // Which part of the day?
+      wish: '1853384624',
+      video: '135011433', // link to their video in Drive
+      passCode: '1787258925',
     },
   },
 
@@ -66,8 +65,9 @@ window.SISIMI = {
     reception: 'Reception only',
   },
 
-  // The Apps Script web app that puts video messages in the client's Drive (see google/SETUP.md)
-  videoUploadUrl: '',
+  // The Apps Script web app ("Untitled project" in raccesshub@gmail.com) that puts video messages in the
+  // "Sisi mi @ 70 · Video messages" Drive folder (see google/SETUP.md)
+  videoUploadUrl: 'https://script.google.com/macros/s/AKfycbxw7ZN4j87at0ZxjDeSwWcuxjgHnp4l8FGIBxIhxwkAPphPJRCSfFyE6zANN8o1K2J1Gg/exec',
   maxVideoMB: 200,
   maxVideoSeconds: 180,
 
