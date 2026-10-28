@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Sisi mi @ 70 · Mrs. Oyinlola Olowu</title>
+  <meta name="description" content="You are cordially invited to celebrate the 70th birthday of Mrs. Oyinlola Olowu, a.k.a. Sisi mi. Kindly respond.">
+  <meta name="theme-color" content="#F4E4DD">
+  <meta property="og:title" content="Sisi mi @ 70 · You're invited">
+  <meta property="og:description" content="Celebrating 70 years of grace, strength and legacy. Sunday, December 27, 2026 · Lagos. Kindly respond.">
+  <meta property="og:image" content="assets/og.jpg">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23A8546A'/%3E%3Ctext x='32' y='41' font-size='26' text-anchor='middle' fill='%23F3D9A4' font-family='Georgia'%3E70%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Pinyon+Script&display=swap">
+  <link rel="preload" as="image" href="assets/invite.webp">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="locked">
+
+  <!-- The envelope: everyone opens the invitation first -->
+  <div class="gate" id="gate" role="dialog" aria-label="Your invitation" aria-modal="true">
+    <p class="gate-kicker rise">An invitation for you</p>
+    <div class="env" id="env">
+      <div class="env-back"></div>
+      <div class="env-pocket"><img alt="" class="env-card" decoding="async" id="envCard" src="assets/invite.webp"></div>
+      <div class="env-front"></div>
+      <div class="env-flap" id="envFlap"></div>
+      <button aria-label="Tap the seal to open your invitation" class="seal" id="seal" type="button">
+        <span class="seal-half l" aria-hidden="true"><svg viewBox="0 0 120 120"><use href="#wax"/></svg></span>
+        <span class="seal-half r" aria-hidden="true"><svg viewBox="0 0 120 120"><use href="#wax"/></svg></span>
+      </button>
+    </div>
+    <p class="gate-hint" id="gateHint"><span>Tap the seal</span></p>
+  </div>
+
+  <canvas aria-hidden="true" class="petals" id="petals"></canvas>
+
+  <!-- the music: starts with the seal, this turns it off and on -->
+  <button aria-label="Turn the music on" aria-pressed="false" class="snd" hidden id="snd" type="button">
+    <span aria-hidden="true" class="eq"><i></i><i></i><i></i><i></i></span>
+  </button>
+
+  <main id="main">
+    <!-- 1. The invitation -->
+    <section class="hero" id="top">
+      <img alt="" aria-hidden="true" class="fl fl-top" src="assets/floral-top.webp">
+      <img alt="" aria-hidden="true" class="fl fl-spray" src="assets/floral-spray.webp">
+      <img alt="" aria-hidden="true" class="fl fl-roses" src="assets/floral-roses.webp">
+      <div class="arch">
+        <p class="kicker" data-words>You are cordially invited to celebrate</p>
+        <h1 class="seventy" aria-label="70th Birthday of Mrs. Oyinlola Olowu">
+          <svg aria-hidden="true" class="seventy-num" viewBox="0 0 300 200">
+            <defs>
+              <linearGradient id="goldText" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0" stop-color="#8E672C"/><stop offset=".35" stop-color="#D4AC62"/><stop offset=".5" stop-color="#F6DFA4"/><stop offset=".65" stop-color="#C79A4C"/><stop offset="1" stop-color="#8A6229"/>
+              </linearGradient>
+            </defs>
+            <text class="draw-70" x="128" y="168">70</text>
+            <text class="draw-th" x="214" y="92">th</text>
+          </svg>
+          <span class="birthday gold">Birthday</span>
+        </h1>
+        <p class="of">of</p>
+        <p class="name">Mrs. Oyinlola Olowu</p>
+        <p class="aka">A.k.a &ldquo;Sisi mi&rdquo;</p>
+        <svg aria-hidden="true" class="ornament"><use href="#orn"/></svg>
+        <p class="tagline" data-words>Celebrating 70 years of grace, strength and legacy</p>
+        <a class="cue" href="#day"><span>The day</span><i></i></a>
+      </div>
+    </section>
+
+    <!-- 2. The day -->
+    <section class="day" id="day">
+      <p class="kicker reveal">Save the date</p>
+      <p class="weekday reveal" id="weekday">Sunday</p>
+      <h2 class="date reveal" id="dateText">December 27, 2026</h2>
+      <svg aria-hidden="true" class="ornament reveal"><use href="#orn"/></svg>
+      <div class="events">
+        <article class="event reveal">
+          <svg aria-hidden="true" class="icon draw" viewBox="0 0 80 80"><path d="M40 6v14M33 12h14M40 20 18 38v32h44V38L40 20Z"/><path d="M18 38 8 46M62 38l10 8M8 46v24h64V46"/><path d="M34 70V54a6 6 0 0 1 12 0v16M28 44h4v6h-4zM48 44h4v6h-4z"/></svg>
+          <p class="ev-kicker">Thanksgiving Service</p>
+          <p class="ev-time">10:00 AM</p>
+          <p class="ev-venue">Chapel of Christ the Light</p>
+          <p class="ev-addr">CIPM Avenue, Alausa<br>Lagos, Nigeria</p>
+          <a class="chip" data-map="thanksgiving" href="#" rel="noopener" target="_blank">Get directions</a>
+        </article>
+        <article class="event reveal">
+          <svg aria-hidden="true" class="icon draw clink" viewBox="0 0 80 80"><g class="g-l"><path d="M18 16h14l-2 20a6 6 0 0 1-10 0l-2-20Z"/><path d="M25 40v20M18 62h14"/></g><g class="g-r"><path d="M48 16h14l-2 20a6 6 0 0 1-10 0l-2-20Z"/><path d="M55 40v20M48 62h14"/></g><path class="spark" d="M40 2v6M34 5l3 4M46 5l-3 4"/></svg>
+          <p class="ev-kicker">Reception</p>
+          <p class="ev-time">2:00 PM</p>
+          <p class="ev-venue">The Civic Centre</p>
+          <p class="ev-addr">Ozumba Mbadiwe Avenue, opp. 1004 Estate<br>Victoria Island, Lagos</p>
+          <a class="chip" data-map="reception" href="#" rel="noopener" target="_blank">Get directions</a>
+        </article>
+      </div>
+      <div class="cal reveal">
+        <button class="link" id="addCal" type="button">Add to my calendar</button>
+        <span aria-hidden="true">·</span>
+        <a class="link" id="gcal" rel="noopener" target="_blank">Google Calendar</a>
+      </div>
+    </section>
+
+    <!-- 3. Countdown -->
+    <section class="count" aria-labelledby="countTitle">
+      <p class="kicker reveal" id="countTitle">Until we celebrate</p>
+      <div class="clock reveal" id="clock" role="timer" aria-live="off">
+        <div class="unit"><b data-u="d">00</b><span>Days</span></div>
+        <div class="unit"><b data-u="h">00</b><span>Hours</span></div>
+        <div class="unit"><b data-u="m">00</b><span>Minutes</span></div>
+        <div class="unit"><b data-u="s">00</b><span>Seconds</span></div>
+      </div>
+      <p class="count-note reveal" hidden id="countNote"></p>
+    </section>
+
+    <!-- 4. RSVP -->
+    <section class="rsvp" id="rsvp">
+      <div class="rsvp-card reveal">
+        <p class="kicker">Kindly respond</p>
+        <h2 class="script gold">Will you celebrate with us?</h2>
+        <p class="lead" id="rsvpLead">Let us know if you'll be joining us, and leave Sisi mi a birthday wish, in words or on video.</p>
+        <div class="rsvp-actions" id="rsvpActions">
+          <button class="btn btn-gold" id="openRsvp" type="button">Respond to the invitation</button>
+        </div>
+        <div class="badge" aria-hidden="true"><small>Invitation</small><span>Admits One</span></div>
+      </div>
+    </section>
+
+    <!-- 5. Psalm -->
+    <section class="verse">
+      <svg aria-hidden="true" class="ornament reveal"><use href="#orn"/></svg>
+      <blockquote>
+        <p class="reveal">For the Lord is good and His love endures forever;</p>
+        <p class="reveal">His faithfulness continues through all generations.</p>
+        <cite class="reveal">Psalm 100:5</cite>
+      </blockquote>
+    </section>
+
+    <footer class="foot">
+      <p class="script gold">Sisi mi @ 70</p>
+      <p>Sunday, December 27, 2026 · Lagos</p>
+    </footer>
+  </main>
+
+  <!-- The RSVP stage: one question at a time -->
+  <div aria-labelledby="stageTitle" aria-modal="true" class="stage" hidden id="stage" role="dialog">
+    <div class="stage-card" id="stageCard">
+      <button aria-label="Close" class="x" id="stageClose" type="button">×</button>
+      <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+      <div class="steps" id="steps"></div>
+    </div>
+  </div>
+
+  <!-- Shared drawings -->
+  <svg aria-hidden="true" height="0" style="position:absolute" width="0">
+    <defs>
+      <radialGradient cx=".38" cy=".32" id="waxFill" r=".75"><stop offset="0" stop-color="#C77486"/><stop offset=".55" stop-color="#A44F65"/><stop offset="1" stop-color="#7C3348"/></radialGradient>
+      <linearGradient id="goldLine" x1="0" x2="1"><stop offset="0" stop-color="#B98B45"/><stop offset=".5" stop-color="#F1D79A"/><stop offset="1" stop-color="#B98B45"/></linearGradient>
+      <symbol id="wax" viewBox="0 0 120 120">
+        <path d="M60 4c7 0 9 5 15 6s11-2 15 3 2 10 6 15 9 6 10 13-4 10-3 16 6 10 3 16-9 6-12 11-1 11-7 14-11-1-16 1-8 7-15 7-9-5-15-6-11 2-15-3-2-10-6-15-9-6-10-13 4-10 3-16-6-10-3-16 9-6 12-11 1-11 7-14 11 1 16-1 8-7 15-7Z" fill="url(#waxFill)"/>
+        <circle cx="60" cy="60" fill="none" r="38" stroke="#E9C989" stroke-opacity=".55" stroke-width="1.6"/>
+        <circle cx="60" cy="60" fill="none" r="33" stroke="#5E2234" stroke-opacity=".35" stroke-width="1"/>
+        <text fill="#F1D79A" font-family="Pinyon Script, cursive" font-size="40" text-anchor="middle" x="60" y="72">OO</text>
+      </symbol>
+      <symbol id="orn" viewBox="0 0 240 24">
+        <path d="M0 12h92M148 12h92" stroke="url(#goldLine)" stroke-width="1"/>
+        <path d="M120 3c4 4 4 14 0 18-4-4-4-14 0-18Zm-9 9c4-4 14-4 18 0-4 4-14 4-18 0Z" fill="none" stroke="#C49A52" stroke-width="1"/>
+        <circle cx="100" cy="12" fill="#C49A52" r="1.6"/><circle cx="140" cy="12" fill="#C49A52" r="1.6"/>
+        <path d="M92 12c3-5 7-5 8 0-1 5-5 5-8 0Zm56 0c-3-5-7-5-8 0 1 5 5 5 8 0Z" fill="none" stroke="#C49A52" stroke-width="1"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <noscript><style>.gate,.petals{display:none}.reveal,[data-words]{opacity:1!important;transform:none!important}body.locked{overflow:auto}</style></noscript>
+  <script src="config.js"></script>
+  <script defer src="sound.js"></script>
+  <script defer src="app.js"></script>
+</body>
+</html>
