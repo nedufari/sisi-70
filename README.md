@@ -18,5 +18,5 @@ Then open http://localhost:4173. Until `config.js` has the form and upload links
 
 ## Publish
 
-Cloudflare Pages: connect this repository, framework preset **None**, no build command, build output directory **`public`**. Every push to `main` then redeploys.
+Cloudflare Pages: `npx wrangler pages deploy` publishes the `public/` folder to the **sisi-rsvp** project (see `wrangler.jsonc`), live at https://sisi-rsvp.pages.dev. If the site ever moves address, change the full addresses in `public/index.html` (link previews) too.
 (Netlify also works: `netlify.toml` publishes `public`.)

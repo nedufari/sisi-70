@@ -1,0 +1,7 @@
+// Cloudflare Pages: the site is only static files (the public/ folder).
+// Deploy with `npx wrangler pages deploy`; it goes live at https://sisi-rsvp.pages.dev
+{
+  "name": "sisi-rsvp",
+  "compatibility_date": "2026-10-23",
+  "pages_build_output_dir": "./public"
+}
