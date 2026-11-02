@@ -6,7 +6,7 @@ window.SISIMI = {
   celebrant: 'Mrs. Oyinlola Olowu',
   aka: 'Sisi mi',
 
-  // Confirmed by the client: Monday, 28 December 2026 (the printed invitation's "Sunday" is a typo).
+  // Confirmed by the client: Monday, 28 December 2026. The invitation card was reissued to say Monday.
   dateLabel: 'Monday, December 28, 2026',
   day: 'Monday',
   date: 'December 28, 2026',
