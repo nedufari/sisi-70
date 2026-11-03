@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Sisi mi @ 70 · Mrs. Oyinlola Olowu</title>
+  <title>Mrs. Oyinlola Olowu At Seventy</title>
   <meta name="description" content="You are cordially invited to celebrate the 70th birthday of Mrs. Oyinlola Olowu, a.k.a. Sisi mi. Kindly respond.">
   <meta name="theme-color" content="#F4E4DD">
-  <meta property="og:title" content="Sisi mi @ 70 · You're invited">
+  <meta property="og:title" content="Mrs. Oyinlola Olowu At Seventy · You're invited">
   <meta property="og:description" content="Celebrating 70 years of grace, strength and legacy. Monday, December 28, 2026 · Lagos. Kindly respond.">
   <!-- WhatsApp and other apps need the full address of the preview image -->
   <meta property="og:url" content="https://sisi-rsvp.pages.dev/">
@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Pinyon+Script&display=swap">
-  <link rel="preload" as="image" href="assets/invite-monday.webp">
+  <link rel="preload" as="image" href="assets/invite-asoebi.webp">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="locked">
@@ -32,7 +32,7 @@
     <p class="gate-kicker rise">An invitation for you</p>
     <div class="env" id="env">
       <div class="env-back"></div>
-      <div class="env-pocket"><img alt="" class="env-card" decoding="async" id="envCard" src="assets/invite-monday.webp"></div>
+      <div class="env-pocket"><img alt="" class="env-card" decoding="async" id="envCard" src="assets/invite-asoebi.webp"></div>
       <div class="env-front"></div>
       <div class="env-flap" id="envFlap"></div>
       <button aria-label="Tap the seal to open your invitation" class="seal" id="seal" type="button">
@@ -122,12 +122,24 @@
       <p class="count-note reveal" hidden id="countNote"></p>
     </section>
 
-    <!-- 4. RSVP -->
+    <!-- 4. Aso ebi: the words on the card, so guests can read them (filled in from config.js) -->
+    <section class="aso" id="aso" aria-labelledby="asoTitle">
+      <div class="aso-card reveal">
+        <p class="kicker">Dressing to celebrate together</p>
+        <h2 class="aso-title" id="asoTitle">Aso Ebi Details</h2>
+        <svg aria-hidden="true" class="ornament"><use href="#orn"/></svg>
+        <div id="asoBody"></div>
+        <p class="aso-sign">Same people · A more beautiful story</p>
+        <a class="link" href="assets/invite-asoebi.webp" rel="noopener" target="_blank">View the card</a>
+      </div>
+    </section>
+
+    <!-- 5. RSVP -->
     <section class="rsvp" id="rsvp">
       <div class="rsvp-card reveal">
         <p class="kicker">Kindly respond</p>
         <h2 class="script gold">Will you celebrate with us?</h2>
-        <p class="lead" id="rsvpLead">Let us know if you'll be joining us, and leave Sisi mi a birthday wish, in words or on video.</p>
+        <p class="lead" id="rsvpLead">Let us know if you'll be joining us, and leave Mrs. Olowu a birthday wish, in words or on video.</p>
         <div class="rsvp-actions" id="rsvpActions">
           <button class="btn btn-gold" id="openRsvp" type="button">Respond to the invitation</button>
         </div>
@@ -135,7 +147,7 @@
       </div>
     </section>
 
-    <!-- 5. Psalm -->
+    <!-- 6. Psalm -->
     <section class="verse">
       <svg aria-hidden="true" class="ornament reveal"><use href="#orn"/></svg>
       <blockquote>
@@ -146,7 +158,7 @@
     </section>
 
     <footer class="foot">
-      <p class="script gold">Sisi mi @ 70</p>
+      <p class="script gold">Mrs. Oyinlola Olowu At Seventy</p>
       <p>Monday, December 28, 2026 · Lagos</p>
     </footer>
   </main>

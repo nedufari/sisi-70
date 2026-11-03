@@ -5,8 +5,9 @@
 window.SISIMI = {
   celebrant: 'Mrs. Oyinlola Olowu',
   aka: 'Sisi mi',
+  title: 'Mrs. Oyinlola Olowu At Seventy', // the name of the celebration: on the pass and in calendars
 
-  // Confirmed by the client: Monday, 28 December 2026. The invitation card was reissued to say Monday.
+  // Confirmed by the client: Monday, 28 December 2026.
   dateLabel: 'Monday, December 28, 2026',
   day: 'Monday',
   date: 'December 28, 2026',
@@ -33,6 +34,28 @@ window.SISIMI = {
       map: 'https://www.google.com/maps/search/?api=1&query=The+Civic+Centre+Ozumba+Mbadiwe+Avenue+Victoria+Island+Lagos',
     },
   ],
+
+  // Aso ebi, as on the client's card (assets/invite-asoebi.webp)
+  asoEbi: {
+    prices: [
+      { item: 'Gele and Pele', price: '₦45,000' },
+      { item: 'Fila for Men', price: '₦10,000' },
+    ],
+    colour: 'Mauve',
+    swatches: [
+      { name: 'Mauve', note: 'Recommended', img: 'assets/swatch-mauve.webp' },
+      { name: 'Rose Pink', img: 'assets/swatch-rose-pink.webp' },
+      { name: 'Blush Pink', img: 'assets/swatch-blush-pink.webp' },
+      { name: 'Dusty Rose', img: 'assets/swatch-dusty-rose.webp' },
+      { name: 'Old Rose', img: 'assets/swatch-old-rose.webp' },
+    ],
+    menColour: 'White',
+    menSwatch: 'assets/swatch-white.webp',
+    accountName: 'Taiwo Akindiji Alani',
+    accountNumber: '8023719168',
+    bank: 'Opay Digital Service',
+    phone: '+234 802 371 9168', // for payment receipts, delivery and pick up
+  },
 
   // RSVPs close at the end of the day itself
   rsvpClosesAt: '2026-12-28T23:59:59+01:00',

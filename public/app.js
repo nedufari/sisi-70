@@ -163,21 +163,51 @@
   $('#gcal').href = 'https://calendar.google.com/calendar/render?' + new URLSearchParams({
     action: 'TEMPLATE', dates: `${utc(first.start)}/${utc(lastEv.end)}`,
     details: C.events.map((e) => `${e.title}: ${e.time}, ${e.venue}, ${e.address}`).join('\n'),
-    location: `${first.venue}, ${first.address}`, text: `Sisi mi @ 70 · ${C.celebrant}'s 70th Birthday`,
+    location: `${first.venue}, ${first.address}`, text: C.title,
   })
   function downloadIcs() {
     const stamp = utc(new Date().toISOString())
     const fold = (s) => s.replace(/[,;\\]/g, (c) => '\\' + c)
     const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Sisi mi 70//EN', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH',
       ...C.events.flatMap((e) => ['BEGIN:VEVENT', `UID:${e.key}-sisimi70`, `DTSTAMP:${stamp}`, `DTSTART:${utc(e.start)}`, `DTEND:${utc(e.end)}`,
-        `SUMMARY:${fold(`Sisi mi @ 70 · ${e.title}`)}`, `LOCATION:${fold(`${e.venue}, ${e.address}`)}`, `DESCRIPTION:${fold(`${C.celebrant}'s 70th Birthday`)}`,
-        'BEGIN:VALARM', 'TRIGGER:-P1D', 'ACTION:DISPLAY', 'DESCRIPTION:Sisi mi @ 70 is tomorrow', 'END:VALARM', 'END:VEVENT']),
+        `SUMMARY:${fold(`${C.title} · ${e.title}`)}`, `LOCATION:${fold(`${e.venue}, ${e.address}`)}`, `DESCRIPTION:${fold(`${C.celebrant}'s 70th Birthday`)}`,
+        'BEGIN:VALARM', 'TRIGGER:-P1D', 'ACTION:DISPLAY', `DESCRIPTION:${fold(C.title)} is tomorrow`, 'END:VALARM', 'END:VEVENT']),
       'END:VCALENDAR'].join('\r\n')
     const a = Object.assign(document.createElement('a'), { download: 'sisimi-70.ics', href: URL.createObjectURL(new Blob([ics], { type: 'text/calendar' })) })
     document.body.append(a); a.click(); a.remove()
   }
   $('#addCal').addEventListener('click', downloadIcs)
   $('#snd').addEventListener('click', () => window.Sound?.toggle())
+
+  /* ── Aso ebi: the card's details, from the settings ── */
+  const A = C.asoEbi
+  $('#asoBody').innerHTML = `
+    <div class="aso-prices">${A.prices.map((p) => `<div class="aso-price"><span>${esc(p.item)}</span><b>${esc(p.price)}</b></div>`).join('')}</div>
+    <h3 class="aso-k">Outfit colour for the day</h3>
+    <p class="aso-colour">${esc(A.colour)}</p>
+    <p class="aso-note">Please see colour chart for reference.</p>
+    <ul class="swatches">${A.swatches.map((s) => `<li><img alt="" decoding="async" height="116" loading="lazy" src="${esc(s.img)}" width="160"><span>${esc(s.name)}${s.note ? `<small>(${esc(s.note)})</small>` : ''}</span></li>`).join('')}</ul>
+    <div class="aso-men">
+      <div><h3 class="aso-k">Outfit colour for men</h3><p class="aso-colour">${esc(A.menColour)}</p></div>
+      <img alt="" decoding="async" height="76" loading="lazy" src="${esc(A.menSwatch)}" width="178">
+    </div>
+    <div class="aso-pay">
+      <h3 class="aso-pay-title">Payment details</h3>
+      <dl>
+        <div><dt>Account name</dt><dd>${esc(A.accountName)}</dd></div>
+        <div><dt>Account no</dt><dd>${esc(A.accountNumber)} <button class="aso-copy" id="asoCopy" type="button">Copy</button></dd></div>
+        <div><dt>Bank</dt><dd>${esc(A.bank)}</dd></div>
+      </dl>
+      <p>Send payment receipt to <a href="tel:${esc(A.phone.replace(/\s/g, ''))}">${esc(A.phone)}</a></p>
+      <p>Call the same number for delivery arrangement and pick up.</p>
+    </div>`
+  $('#asoCopy').addEventListener('click', async (e) => {
+    try {
+      await navigator.clipboard.writeText(A.accountNumber)
+      e.target.textContent = 'Copied'
+      setTimeout(() => { e.target.textContent = 'Copy' }, 2000)
+    } catch { /* no clipboard here: the number is on the screen to select */ }
+  })
 
   /* ── Countdown ── */
   const start = new Date(first.start).getTime(), closes = new Date(C.rsvpClosesAt).getTime()
@@ -188,7 +218,7 @@
       $('#clock').hidden = true
       const note = $('#countNote')
       note.hidden = false
-      note.textContent = now < closes ? 'Today is the day. See you there!' : 'Thank you for celebrating Sisi mi with us.'
+      note.textContent = now < closes ? 'Today is the day. See you there!' : 'Thank you for celebrating Mrs. Olowu with us.'
       return
     }
     const v = { d: Math.floor(left / 864e5), h: Math.floor(left / 36e5) % 24, m: Math.floor(left / 6e4) % 60, s: Math.floor(left / 1e3) % 60 }
@@ -232,7 +262,7 @@
     },
     name: {
       html: () => `<h3 id="stageTitle">${S.response === 'accept' ? "Let's get you on the list" : "We're sorry you can't make it"}</h3>
-        <p class="sub">${S.response === 'accept' ? 'Your name, as it should appear on your pass.' : 'Tell us who you are, and leave Sisi mi a wish.'}</p>
+        <p class="sub">${S.response === 'accept' ? 'Your name, as it should appear on your pass.' : 'Tell us who you are, and leave Mrs. Olowu a wish.'}</p>
         <div class="fields two"><div class="field"><label for="fn">First name</label><input autocomplete="given-name" class="input" id="fn" maxlength="60" value="${esc(S.firstName)}"></div>
         <div class="field"><label for="ln">Last name</label><input autocomplete="family-name" class="input" id="ln" maxlength="60" value="${esc(S.lastName)}"></div></div>`,
       done(el) {
@@ -266,15 +296,15 @@
       },
     },
     wish: {
-      html: () => `<h3 id="stageTitle">A wish for Sisi mi</h3><p class="sub">A few words she'll treasure. Optional.</p>
+      html: () => `<h3 id="stageTitle">A wish for Mrs. Olowu</h3><p class="sub">A few words she'll treasure. Optional.</p>
         <div class="fields"><div class="field">
-        <textarea aria-label="Your birthday wish" class="input" id="wi" maxlength="300" placeholder="Happy 70th, Sisi mi…">${esc(S.wish)}</textarea><p class="counter" id="wc">${S.wish.length}/300</p></div></div>`,
+        <textarea aria-label="Your birthday wish" class="input" id="wi" maxlength="300" placeholder="Happy 70th, Mrs. Olowu…">${esc(S.wish)}</textarea><p class="counter" id="wc">${S.wish.length}/300</p></div></div>`,
       bind(el) { const t = el.querySelector('#wi'); t.addEventListener('input', () => { el.querySelector('#wc').textContent = `${t.value.length}/300` }) },
       done(el) { S.wish = el.querySelector('#wi').value.trim() },
     },
     video: {
       next: () => (S.response === 'accept' ? 'Send my RSVP' : 'Send my wishes'),
-      html: () => `<h3 id="stageTitle">Say it on video</h3><p class="sub">Record a short birthday message for Sisi mi, or choose one from your phone. Optional, up to ${Math.round(C.maxVideoSeconds / 60)} minutes.</p><div id="vid"></div>`,
+      html: () => `<h3 id="stageTitle">Say it on video</h3><p class="sub">Record a short birthday message for Mrs. Olowu, or choose one from your phone. Optional, up to ${Math.round(C.maxVideoSeconds / 60)} minutes.</p><div id="vid"></div>`,
       // the music goes quiet here, so it isn't in anyone's recording
       bind(el) { window.Sound?.duck(true); Video.mount(el.querySelector('#vid')) },
       leave() { Video.stop(); window.Sound?.duck(false) },
@@ -292,11 +322,13 @@
         ${ticketHtml()}
         <div class="done-actions"><button class="btn btn-gold" id="savePass" type="button">Save my pass</button>
         <button class="btn btn-soft" id="calPass" type="button">Add the day to my calendar</button>
+        <button class="btn btn-soft" id="seeAso" type="button">See the aso ebi details</button>
         <button class="btn btn-ghost" id="finish" type="button">Back to the invitation</button></div>`,
       bind(el) {
         drawQr(el.querySelector('.t-qr'))
         el.querySelector('#savePass').addEventListener('click', savePass)
         el.querySelector('#calPass').addEventListener('click', downloadIcs)
+        el.querySelector('#seeAso').addEventListener('click', async () => { await close(); $('#aso').scrollIntoView() })
         el.querySelector('#finish').addEventListener('click', close)
         setTimeout(() => window.Sound?.chime(), 350)
         if (!reduce) setTimeout(() => { const r = el.querySelector('.ticket').getBoundingClientRect(); Petals.burst(r.left + r.width / 2, r.top + 30, 90) }, 450)
@@ -304,7 +336,7 @@
     },
     regrets: {
       bare: true,
-      html: () => `<h3 id="stageTitle">We'll miss you</h3><p class="sub">${S.wish || S.video ? `Thank you for your wishes, ${esc(S.firstName)}. Sisi mi will feel your love.` : `Thank you for letting us know, ${esc(S.firstName)}.`}</p>
+      html: () => `<h3 id="stageTitle">We'll miss you</h3><p class="sub">${S.wish || S.video ? `Thank you for your wishes, ${esc(S.firstName)}. Mrs. Olowu will feel your love.` : `Thank you for letting us know, ${esc(S.firstName)}.`}</p>
         <div class="done-actions"><button class="btn btn-soft" id="finish" type="button">Back to the invitation</button></div>`,
       bind(el) { el.querySelector('#finish').addEventListener('click', close); Petals.single() },
     },
@@ -371,7 +403,7 @@
   /* the RSVP section: respond, or your pass if you already have */
   function paintRsvp() {
     const box = $('#rsvpActions'), lead = $('#rsvpLead'), mine = load()
-    if (closed) { lead.textContent = 'RSVPs have closed. Thank you for celebrating Sisi mi with us.'; box.replaceChildren(); return }
+    if (closed) { lead.textContent = 'RSVPs have closed. Thank you for celebrating Mrs. Olowu with us.'; box.replaceChildren(); return }
     if (mine?.response === 'accept') {
       lead.textContent = `You're on the list, ${mine.firstName}. Your pass admits one.`
       box.innerHTML = '<button class="btn btn-gold" id="viewPass" type="button">View my pass</button><button class="btn btn-ghost" id="redo" type="button">Change my response</button>'
@@ -456,7 +488,7 @@
 
   /* ── The pass ── */
   const PART = { both: 'Thanksgiving & reception', reception: 'Reception · 2:00 PM', thanksgiving: 'Thanksgiving · 10:00 AM' }
-  const ticketHtml = () => `<div class="ticket ${reduce ? '' : 'ticket-in'}"><p class="t-k">Sisi mi @ 70</p><p class="t-name">${esc(S.firstName)} ${esc(S.lastName)}</p>
+  const ticketHtml = () => `<div class="ticket ${reduce ? '' : 'ticket-in'}"><p class="t-k">${esc(C.title)}</p><p class="t-name">${esc(S.firstName)} ${esc(S.lastName)}</p>
     <p class="t-when">${esc(C.dateLabel)}<br>${esc(PART[S.attending] || PART.both)}</p><div class="t-qr" role="img" aria-label="Pass code ${esc(S.code)}"></div><p class="t-code">${esc(S.code)}</p>
     <div class="t-band"><small>Invitation</small>Admits One</div></div>`
   let qrLib
@@ -480,7 +512,7 @@
     const gold = x.createLinearGradient(0, 0, W, 0); gold.addColorStop(0, '#9C7434'); gold.addColorStop(.5, '#E8C981'); gold.addColorStop(1, '#9C7434')
     x.strokeStyle = gold; x.lineWidth = 4; x.strokeRect(50, 50, W - 100, H - 100); x.lineWidth = 1.5; x.strokeRect(70, 70, W - 140, H - 140)
     x.textAlign = 'center'
-    x.fillStyle = '#3D463B'; x.font = '600 34px "Cormorant Garamond"'; x.letterSpacing = '10px'; x.fillText('SISI MI AT SEVENTY', W / 2, 190)
+    x.fillStyle = '#3D463B'; x.font = '600 34px "Cormorant Garamond"'; x.letterSpacing = '5px'; x.fillText(C.title.toUpperCase(), W / 2, 190)
     x.letterSpacing = '0px'; x.fillStyle = gold; x.font = '400 150px "Pinyon Script"'; x.fillText('Birthday', W / 2, 360)
     x.fillStyle = '#A8546A'; x.font = '700 72px "Cormorant Garamond"'; x.fillText(`${S.firstName} ${S.lastName}`.slice(0, 26), W / 2, 500)
     x.fillStyle = '#6E7369'; x.font = '500 42px "Cormorant Garamond"'; x.fillText(C.dateLabel, W / 2, 575); x.fillText(PART[S.attending] || PART.both, W / 2, 630)
@@ -496,7 +528,7 @@
     x.fillStyle = '#F2D99C'; x.font = '600 64px "Cormorant Garamond"'; x.letterSpacing = '6px'; x.fillText('ADMITS ONE', W / 2, H - 112)
     const blob = await new Promise((r) => cv.toBlob(r, 'image/png'))
     const file = new File([blob], `sisimi70-pass-${S.code}.png`, { type: 'image/png' })
-    if (navigator.canShare?.({ files: [file] })) { try { await navigator.share({ files: [file], title: 'My pass · Sisi mi @ 70' }); return } catch (e) { if (e.name === 'AbortError') return } }
+    if (navigator.canShare?.({ files: [file] })) { try { await navigator.share({ files: [file], title: `My pass · ${C.title}` }); return } catch (e) { if (e.name === 'AbortError') return } }
     const a = Object.assign(document.createElement('a'), { download: file.name, href: URL.createObjectURL(blob) })
     document.body.append(a); a.click(); a.remove()
   }

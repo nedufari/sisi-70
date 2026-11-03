@@ -123,7 +123,7 @@ main { position: relative; }
 .reveal.in { opacity: 1; transform: none; }
 
 /* ── The day ─────────────────────────────────────────────────── */
-.day, .count, .rsvp, .verse { position: relative; padding: clamp(72px, 11vw, 130px) var(--g); text-align: center; }
+.day, .count, .aso, .rsvp, .verse { position: relative; padding: clamp(72px, 11vw, 130px) var(--g); text-align: center; }
 .day { background: linear-gradient(180deg, var(--paper-2), var(--paper)); }
 .weekday { margin: 18px 0 0; font-size: 15px; font-weight: 600; letter-spacing: .36em; text-transform: uppercase; color: var(--ink); }
 .date { margin: 4px 0 0; font-size: clamp(34px, 7vw, 60px); font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--rose); line-height: 1.1; }
@@ -157,6 +157,39 @@ main { position: relative; }
 .unit span { display: block; margin-top: 8px; font-size: 11px; font-weight: 700; letter-spacing: .24em; text-transform: uppercase; color: #E7DCC4; }
 .count-note { margin: 22px auto 0; max-width: 34ch; font-size: 22px; font-style: italic; }
 
+/* ── Aso ebi ─────────────────────────────────────────────────── */
+.aso { background: linear-gradient(180deg, #F3E3DC, #F7E1DA); }
+.aso-card { max-width: 720px; margin: 0 auto; padding: clamp(40px, 6vw, 64px) clamp(16px, 4vw, 48px) 28px; border-radius: 28px; background: rgba(255, 251, 248, .9);
+  box-shadow: 0 0 0 1.5px rgba(185, 139, 69, .7), 0 40px 80px -40px rgba(124, 51, 72, .55); }
+.aso-card .kicker { line-height: 1.7; text-wrap: balance; }
+.aso-title { margin: 10px 0 0; font-size: clamp(34px, 7vw, 56px); font-weight: 600; letter-spacing: .06em; line-height: 1.1; text-transform: uppercase; color: var(--rose-deep); }
+.aso-prices { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+.aso-price { padding: 16px 10px; border-radius: 16px; background: var(--paper-2); box-shadow: inset 0 0 0 1px rgba(185, 139, 69, .5); }
+.aso-price span { display: block; font-size: 20px; }
+.aso-price b { display: block; font-size: clamp(34px, 6vw, 44px); font-weight: 700; line-height: 1.15; color: var(--rose-deep); }
+.aso-k { margin: 30px 0 0; font-size: 13px; font-weight: 600; letter-spacing: .26em; line-height: 1.6; text-transform: uppercase; }
+.aso-colour { margin: 2px 0 0; font-size: clamp(32px, 6vw, 44px); font-weight: 600; letter-spacing: .08em; line-height: 1.15; text-transform: uppercase; color: var(--rose-deep); }
+.aso-note { margin: 0; font-style: italic; }
+.swatches { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 16px 0 0; padding: 0; list-style: none; }
+.swatches li { flex: 0 0 calc((100% - 20px) / 3); overflow: hidden; border-radius: 10px; background: #fff; box-shadow: 0 0 0 1px rgba(185, 139, 69, .5); }
+@media (min-width: 620px) { .swatches li { flex-basis: calc((100% - 40px) / 5); } }
+.swatches img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+.swatches span { display: block; padding: 7px 2px 8px; font-size: 13px; font-weight: 600; letter-spacing: .06em; line-height: 1.25; text-transform: uppercase; }
+.swatches small { display: block; font-size: min(12px, 3.4vw); font-weight: 500; letter-spacing: 0; text-transform: none; }
+.aso-men { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px 24px; margin-top: 26px; padding: 0 12px 18px; border-radius: 16px; background: var(--paper-2); box-shadow: inset 0 0 0 1px rgba(185, 139, 69, .5); }
+.aso-men .aso-k { margin-top: 18px; }
+.aso-men img { width: 150px; height: auto; margin-top: 18px; border-radius: 8px; }
+.aso-pay { margin-top: 26px; padding: 22px clamp(14px, 3vw, 28px); border-radius: 16px; box-shadow: inset 0 0 0 1px rgba(185, 139, 69, .6); }
+.aso-pay-title { width: fit-content; margin: 0 auto 16px; padding: 6px 24px; border-radius: 99px; background: var(--rose); color: #fff; font-size: 13px; font-weight: 600; letter-spacing: .26em; text-transform: uppercase; }
+.aso-pay dl { display: grid; gap: 10px; margin: 0 0 16px; }
+.aso-pay dt { font-size: 13px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--mute); }
+.aso-pay dd { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 12px; margin: 0; font-size: 21px; font-weight: 700; line-height: 1.25; color: var(--rose-deep); }
+.aso-copy { min-height: 44px; padding: 0 16px; border-radius: 99px; background: var(--blush); font-size: 15px; font-weight: 700; letter-spacing: .08em; }
+.aso-copy:hover { background: var(--blush-2); }
+.aso-pay p { margin: 6px 0 0; }
+.aso-pay a { font-weight: 700; white-space: nowrap; color: var(--rose-deep); text-underline-offset: 3px; }
+.aso-sign { margin: 26px 0 4px; font-size: 13px; font-weight: 600; letter-spacing: .2em; line-height: 1.7; text-transform: uppercase; color: var(--sage-deep); text-wrap: balance; }
+
 /* ── RSVP ────────────────────────────────────────────────────── */
 .rsvp { background: radial-gradient(80% 70% at 50% 30%, #F7E1DA, #EBC7BE 80%); overflow: hidden; }
 .rsvp-card { position: relative; max-width: 620px; margin: 0 auto; padding: clamp(44px, 7vw, 70px) clamp(22px, 5vw, 56px) 92px; border-radius: 28px; background: rgba(255, 251, 248, .9);
@@ -184,7 +217,7 @@ main { position: relative; }
 .verse p + p { --d: .25s; }
 .verse cite { --d: .5s; display: block; margin-top: 16px; font-style: normal; font-size: 14px; font-weight: 700; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); }
 .foot { padding: 46px var(--g) calc(46px + env(safe-area-inset-bottom)); text-align: center; background: #EBD3CB; color: var(--mute); font-size: 16px; }
-.foot .script { margin: 0; font-size: 40px; padding-bottom: .1em; }
+.foot .script { margin: 0; font-size: clamp(32px, 7vw, 40px); line-height: 1.2; padding-bottom: .1em; text-wrap: balance; }
 .foot p { margin: 0; }
 
 /* ── The RSVP stage ──────────────────────────────────────────── */
@@ -253,7 +286,7 @@ select.input { padding-right: 30px; background: #fff url("data:image/svg+xml,%3C
   box-shadow: 0 0 0 1.5px var(--gold), 0 0 0 6px #FFFBF7, 0 0 0 7.5px rgba(185, 139, 69, .5), 0 30px 60px -30px rgba(124, 51, 72, .6); }
 .ticket::before, .ticket::after { content: ""; position: absolute; top: 58%; width: 22px; height: 22px; border-radius: 50%; background: #F3E2DB; box-shadow: inset 0 0 0 1.5px var(--gold); }
 .ticket::before { left: -11px; } .ticket::after { right: -11px; }
-.ticket .t-k { margin: 0; font-size: 12px; font-weight: 700; letter-spacing: .3em; text-transform: uppercase; color: var(--sage-deep); }
+.ticket .t-k { margin: 0; font-size: 12px; font-weight: 700; letter-spacing: .18em; text-wrap: balance; text-transform: uppercase; color: var(--sage-deep); }
 .ticket .t-name { margin: 6px 0 0; font-size: 28px; font-weight: 700; line-height: 1.15; color: var(--rose); }
 .ticket .t-when { margin: 4px 0 0; color: var(--mute); font-size: 16px; }
 .ticket .t-qr { width: 150px; height: 150px; margin: 16px auto 8px; padding: 8px; border-radius: 12px; background: #fff; box-shadow: inset 0 0 0 1px rgba(185, 139, 69, .4); }
