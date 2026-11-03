@@ -29,9 +29,9 @@ window.SISIMI = {
       start: '2026-12-28T14:00:00+01:00',
       end: '2026-12-28T18:00:00+01:00',
       time: '2:00 PM',
-      venue: 'The Civic Centre',
-      address: 'Ozumba Mbadiwe Avenue, opposite 1004 Estate, Victoria Island, Lagos',
-      map: 'https://www.google.com/maps/search/?api=1&query=The+Civic+Centre+Ozumba+Mbadiwe+Avenue+Victoria+Island+Lagos',
+      // The client is keeping the exact place back for now, so there's no address or directions to give
+      venue: 'Victoria Island',
+      address: 'Lagos',
     },
   ],
 

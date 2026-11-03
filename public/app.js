@@ -286,7 +286,7 @@
     },
     attending: {
       html: () => `<h3 id="stageTitle">Which part of the day?</h3><p class="sub">Your pass admits one.</p>
-        <div class="opts" role="radiogroup">${[['both', 'Both', 'Thanksgiving at 10:00 AM, reception at 2:00 PM'], ['thanksgiving', 'Thanksgiving service', '10:00 AM · Chapel of Christ the Light'], ['reception', 'Reception', '2:00 PM · The Civic Centre']]
+        <div class="opts" role="radiogroup">${[['both', 'Both', 'Thanksgiving at 10:00 AM, reception at 2:00 PM'], ['thanksgiving', 'Thanksgiving service', '10:00 AM · Chapel of Christ the Light'], ['reception', 'Reception', '2:00 PM · Victoria Island']]
           .map(([v, t, s]) => `<button aria-checked="${S.attending === v}" class="opt" data-v="${v}" role="radio" type="button"><span><b>${t}</b><span>${s}</span></span></button>`).join('')}</div>`,
       bind(el) {
         el.querySelectorAll('.opt').forEach((b) => b.addEventListener('click', () => {
